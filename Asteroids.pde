@@ -158,18 +158,20 @@ void draw() {
     r.display();
   }
   
-  // Delete astroids when out of bounds
+  // Delete asteroids when out of bounds
   for (int i = rock.size() - 1; i >= 0; i--) {
     if (!(rock.get(i).pos.x > 0 && rock.get(i).pos.x < width && rock.get(i).pos.y > 0 && rock.get(i).pos.y < height || rock.get(i).start == true)) {
       rock.remove(rock.get(i));
     }
   }
   
-  // Check if an astroid hits the ship
+  // Check if an asteroid hits the ship
   for (int i = 0; i < rock.size(); i++) {
     if ((dist(rock.get(i).pos.x,rock.get(i).pos.y,ship.center[0],ship.center[1]) < rock.get(i).size/2 + 19)
     || (dist(rock.get(i).pos.x,rock.get(i).pos.y,ship.center[0]+20*cos(ship.theta),ship.center[1]+20*sin(ship.theta)) < rock.get(i).size/2 + 13)) {
       background(255,0,0);
+      String scoreString = "Score: " + score;
+      text("Score: " + score, width/2 - scoreString.length()*10, height/2);
       noLoop();
     }
   }

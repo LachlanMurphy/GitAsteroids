@@ -1,5 +1,5 @@
 /*
- * Class to create the astroids
+ * Class to create the asteroids
  */
 class Rock {
   float size;
